@@ -5,6 +5,7 @@ router.get('/', (req,res) => {
     console.log('===============');
     Post.findAll({
         attributes: ['id', 'post_url', 'title', 'created_at'],
+        order: [['created_at', 'DESC']],
         include: [
             {
                 model: User,
@@ -68,7 +69,7 @@ router.put('/:id', (req,res) => {
     )
     .then(dbPostData => {
         if(!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
+            res.status(404).json({ message: 'No post found with this idd' });
             return;
         }
         res.json(dbPostData);
